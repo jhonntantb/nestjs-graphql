@@ -9,7 +9,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class UserService {
-  private users: User[] = [];
+  private users: User[] = [
+    {
+      email: 'jhon@gmail.com',
+      password: 'password123',
+      userId: '123msnddh',
+      age: 30,
+    },
+  ];
   public createUser(createUserData: CreateUserInput): User {
     const user: User = {
       userId: uuidv4(),
@@ -28,6 +35,12 @@ export class UserService {
   public getUser(getUserArgs: GetUserArgs): User {
     const user = this.users.find((user) => user.userId === getUserArgs.userId);
 
+    return user;
+  }
+
+  public getUserByEmail(email: string): User | undefined {
+    console.log('llegamos');
+    const user = this.users.find((user) => user.email === email);
     return user;
   }
   public getUsers(getUsersArgs: GetUsersArgs): User[] {

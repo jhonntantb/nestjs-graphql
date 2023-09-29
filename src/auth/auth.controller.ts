@@ -12,8 +12,6 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Req() req: Request): { access_token: string } {
-    console.log('este es el ocntroaldor');
-    //return this.authService.login(req.user as User);
-    return { access_token: 'string ' };
+    return this.authService.login(req.user as User);
   }
 }

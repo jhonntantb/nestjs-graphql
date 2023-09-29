@@ -6,12 +6,11 @@ import { User } from '../../user/models/user';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
-  constructor(private readonly authService: AuthService) {
-    super({ usernameFiel: 'email' });
+  constructor(private authService: AuthService) {
+    super({ usernameField: 'email' });
   }
 
   validate(email: string, passport: string): User {
-    console.log('llegue a la estrageia local');
     const user = this.authService.validate(email, passport);
 
     if (!user) {

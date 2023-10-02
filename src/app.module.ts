@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { UserModule } from './user/user.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AuthModule } from './auth/auth.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
       autoSchemaFile: true,
       driver: ApolloDriver,
     }),
+    MongooseModule.forRoot('mongodb://localhost/nest'),
     UserModule,
     AuthModule,
   ],

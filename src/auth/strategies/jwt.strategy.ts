@@ -15,9 +15,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  validate(validationPayload: { email: string; sub: string }): User | null {
+  async validate(validationPayload: {
+    email: string;
+    sub: string;
+  }): Promise<User | null> {
     console.log('llegue a esta estrageia jwt');
-    const user = this.userService.getUserByEmail(validationPayload.email);
+    const user = await this.userService.getUserByEmail(validationPayload.email);
 
     if (!user) {
       throw new UnauthorizedException();

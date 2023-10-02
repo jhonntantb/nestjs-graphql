@@ -11,8 +11,8 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  validate(email: string, password: string): User | null {
-    const user = this.userService.getUserByEmail(email);
+  async validate(email: string, password: string): Promise<User | null> {
+    const user = await this.userService.getUserByEmail(email);
     if (!user) {
       return null;
     }
@@ -31,7 +31,7 @@ export class AuthService {
     };
   }
 
-  verify(token: string): User {
+  async verify(token: string): Promise<User> {
     const decoded = this.jwtService.verify(token, {
       secret: jwtSecret,
     });

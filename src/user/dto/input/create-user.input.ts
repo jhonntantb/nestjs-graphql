@@ -10,5 +10,9 @@ export class CreateUserInput {
 
   @Field()
   @IsNotEmpty()
+  password: string;
+
+  @Field()
+  @IsNotEmpty()
   age: number;
 }

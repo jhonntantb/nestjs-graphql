@@ -1,7 +1,10 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectId } from 'mongoose';
 
 @ObjectType()
 export class User {
+  _id?: ObjectId;
+
   @Field()
   userId: string;
 

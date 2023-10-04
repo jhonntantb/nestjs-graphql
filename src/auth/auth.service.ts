@@ -23,7 +23,7 @@ export class AuthService {
   login(user: User): { access_token: string } {
     const payload = {
       email: user.email,
-      sub: user.userId,
+      sub: user._id,
     };
 
     return {
